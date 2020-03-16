@@ -8,7 +8,6 @@
       function drawChart() {
 
        $.get("<?=ROOT_PATH?>statsDataProvider").done(function(jsonData){
-
           var data = new google.visualization.DataTable();
                     data.addColumn('string', 'Type');
                     data.addColumn('number', 'Quantite');

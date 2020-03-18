@@ -1,5 +1,5 @@
 <?php
-
+require 'database.php';
 class Manga {
     public $Id;
     public $ISBN;
@@ -14,9 +14,7 @@ class Manga {
 // La fonction getArticles retourne l'ensemble des données.
 function getMangas() {
 
-    $bdd = new PDO('mysql:host=localhost;dbname=projetWeb;charset=utf8', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-    $response = $bdd->prepare('SELECT * FROM manga');
+    $response = getDB()->prepare('SELECT * FROM manga');
     $response->execute();
     $mangas = $response->fetchAll(PDO::FETCH_CLASS, "Manga");
 

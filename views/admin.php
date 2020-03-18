@@ -18,6 +18,7 @@ if(empty($_SESSION['login'])){
   </thead>
   <tbody>
 <?php foreach($users as $user):?>
+<?php var_dump('test controller'.$user->login.' after');?>
     <tr>
       <th scope="row"><?= $user->id ?></th>
       <td><?= $user->login ?></td>

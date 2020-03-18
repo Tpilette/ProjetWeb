@@ -9,7 +9,7 @@
     <dt class="col-sm-2">Prix</dt>
         <dd class="col-sm-10"><?=$manga->Prix?></dd>
 </dl>
-<img src="../views/image/2020-03-02 11_50_24-Window.png" alt="UQH01" height="42" width="42">
+<img src="../views/image/UQH01.png" alt="UQH01" height="42" width="42">
 <div id="addToBasket">
  <button>Ajouter au panier</button>
 </div>

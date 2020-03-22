@@ -1,4 +1,4 @@
-##Projet web 2ème année cours du soir IPAM - La Louvière
+### Projet web 2ème année cours du soir IPAM - La Louvière 
 
 Projet réalisé en PHP - MVC, utilisation d'un google chart en javascript pour renvoyer des statistique sur le site.
 
@@ -7,7 +7,7 @@ Thème : "boutique de manga et goodies japonnais"
 
 
 
-### Installation  
+### Installation 
 
 Pré-requis : Xamp
 

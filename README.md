@@ -10,12 +10,15 @@ Thème : "boutique de manga et goodies japonnais"
 ### Installation 
 
 Pré-requis : Xamp
-
+<br>
 Ajouter fichier 'projetweb.conf' dans le folder : C:\xampp\apache\conf
+<br>
 Modifier fichier httpd.conf dans la section "Secure (SSL/TLS) connections" et rajouter : 
 <br>
   #Include conf/extra/httpd-ssl.conf
+<br>
   #Include conf/extra/projetweb.conf
 <br>
 Editer fichier host dans C:\Windows\System32\drivers\etc et ajouter : 127.0.0.1 projetweb.test
+<br>
 Url "home" : http://projetweb.test/ProjetECommerce/

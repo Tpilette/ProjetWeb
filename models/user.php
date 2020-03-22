@@ -8,7 +8,7 @@ class User
     public $id;
     public $login;
     public $email;
-    public $password;
+   // public $password;
     public $role;
     public $nom;
     public $prenom;
@@ -21,7 +21,7 @@ class User
         $this->id = $data['id'];
         $this->login = $data['login'];
         $this->email = $data['email'];
-        $this->password = $data['password'];
+        //   $this->password = $data['password'];
         $this->role = $data['valeur'];
         $this->nom = $data['nom'];
         $this->prenom = $data['prenom'];
@@ -36,8 +36,8 @@ class User
 function getUsers() {
     try
     {
-        $response = getDB()->query('SELECT u.id,login,email,r.valeur
-                                    FROM USER u
+        $response = getDB()->query('SELECT u.id,login,email,r.valeur,nom,prenom,adresse,numTel,dateNaissance
+                                    FROM personne u
                                     INNER JOIN 
                                     ROLE r ON r.id = u.role');
 
@@ -57,7 +57,7 @@ function getUserById($login) {
     try
     {
         $response = getDB()->prepare('SELECT id,login,email 
-                                      FROM USER 
+                                      FROM personne 
                                       WHERE login = :login');
 
         $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');
@@ -79,7 +79,7 @@ function getUserById($login) {
 function addUser($login,$pasword,$email){
 
     // ici faire l'insert en db
-    $reponse = getDB()->prepare('INSERT INTO user 
+    $reponse = getDB()->prepare('INSERT INTO personne 
                                 SET login = :login,
                                     password = :password,
                                     email = :email');
@@ -90,7 +90,7 @@ function addUser($login,$pasword,$email){
 
 function checkLogin($login){
     //vérifier que le login n'existe pas
-    $reponse = getDB()->prepare('SELECT * FROM USER WHERE login = :login');
+    $reponse = getDB()->prepare('SELECT * FROM personne WHERE login = :login');
     $reponse->execute([':login' => $login]);
     $user = $reponse->fetch();
     $reponse->closeCursor(); // Termine le traitement de la requête
@@ -109,7 +109,7 @@ function editUser($user,$login,$email,$password,$confirmPassword) {
         else
         {
             //C'est ici qu'on va faire l'update de l'utilisateur.
-            $response = getDB()->prepare('UPDATE USER 
+            $response = getDB()->prepare('UPDATE personne 
                                             SET email = :email, 
                                             password = :password 
                                             WHERE login = :login');

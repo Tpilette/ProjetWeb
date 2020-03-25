@@ -2,7 +2,6 @@
 require 'database.php';
 class Manga {
     public $Id;
-    public $ISBN;
     public $Title;
     public $Editeur;
     public $Volume;
@@ -19,7 +18,6 @@ function getMangas() {
     $mangas = $response->fetchAll(PDO::FETCH_CLASS, "Manga");
 
     $response->closeCursor();
-
     return $mangas;
 }
 
@@ -34,7 +32,6 @@ function getMangaById($id) {
            return $manga;
         }
     }
-    return ' ';
 }
 
 ?>

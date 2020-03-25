@@ -6,7 +6,9 @@ if (!REQ_TYPE_ID) {
     $mangas = getMangas();
     include 'views/mangas.php';
 } else {
-    $manga = getMangaById(REQ_TYPE_ID);
+    $title = str_replace("%20", " ", REQ_TYPE_ID);
+    $manga = getMangaById($title);
+    var_dump($manga);
     include 'views/mangaDetail.php';
 }
 

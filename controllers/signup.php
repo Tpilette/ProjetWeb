@@ -9,7 +9,7 @@ if(!empty($_POST)) {
         }
         else {
 
-            if(checkLogin($_POST['login'])){
+            if(checkLoginExist($_POST['login'])){
                 $errorMessage = "Le login ".$_POST['login']." existe déjà...";
             }
             else {
@@ -23,12 +23,10 @@ if(!empty($_POST)) {
     }
     else
     {
-        //Ici on va prévenir l'utilisateur qu'il manque quelque chose
         $errorMessage = "Tu as oublié d'encoder quelque chose...";
     }
 }
 else {
-    //Ici on va prévenir l'utilisateur qu'il manque quelque chose
     $errorMessage = "Tu as oublié d'encoder quelque chose...";
 }
  include 'views/signup.php';

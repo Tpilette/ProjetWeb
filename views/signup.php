@@ -5,10 +5,10 @@ if(!empty($_SESSION['login'])){
     header("Location: ".ROOT_PATH."welcome");
     exit();
 }
-
-
 ob_start()
 ?>
+
+
 <form action="<?=ROOT_PATH.'signup'?>" method="POST">
     <div class="form-group">
         <label for="idlogin">Login</label>
@@ -28,6 +28,8 @@ ob_start()
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+
 <?php
 $title = "S'inscrire";
 $content = ob_get_clean();

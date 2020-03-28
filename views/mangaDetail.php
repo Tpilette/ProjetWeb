@@ -12,7 +12,11 @@
 <img src="../image/<?= $manga->Title ?>-<?= $manga->Volume ?>" height="45%" width="25%">
 <div id="addToBasket">
 <br>
- <button>Ajouter au panier</button>
+<?php 
+    if(!empty($_SESSION['login'])){
+     echo '<button>Ajouter au panier</button>';
+    }
+ ?>
 </div>
 
 <?php

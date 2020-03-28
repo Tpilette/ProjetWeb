@@ -24,7 +24,7 @@
                 <?php
                     if(!empty($_SESSION['login']))
                     {
-                        if ($_SESSION['login'] == 'admin') {
+                        if ($_SESSION['role'] == 2) {
                             echo '<li class="nav-item"><a class="nav-link" href="'.ROOT_PATH.'admin">Menu d\'administration</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="'.ROOT_PATH.'statistiques">Statistiques</a></li>';
                         }                      
@@ -40,7 +40,7 @@
                         echo '<a href="'.ROOT_PATH.'account" class="btn btn-outline-info my-2 my-sm-0">Mon compte</a>';
                         echo '<a href="'.ROOT_PATH.'logout" class="btn btn-outline-success my-2 my-sm-0">Se déconnecter</a>';
 
-                        if($_SESSION['login'] != 'admin')
+                        if($_SESSION['role'] == 1)
                         {
                             echo '<a href="'.ROOT_PATH.'panier" class="btn btn-outline-info my-2 my-sm-0">Mon panier</a>';
                         }

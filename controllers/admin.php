@@ -1,7 +1,7 @@
 <?php 
 require 'models/user.php';
 
-$users = getUsers();
+$users = User::getUsers();
 
 
 include 'views/admin.php';

@@ -1,5 +1,6 @@
 <?php
 require 'database.php';
+
 class Manga {
     public $Id;
     public $Title;
@@ -7,31 +8,33 @@ class Manga {
     public $Volume;
     public $Prix;
     public $Auteur;
-}
+    public $ImageData;
 
 
-// La fonction getArticles retourne l'ensemble des données.
-function getMangas() {
+        // retourne l'ensemble des données.
+    public function getMangas() {
 
-    $response = getDB()->prepare('SELECT * FROM manga');
-    $response->execute();
-    $mangas = $response->fetchAll(PDO::FETCH_CLASS, "Manga");
+        $response = getDB()->prepare('SELECT * FROM manga');
+        $response->execute();
+        $mangas = $response->fetchAll(PDO::FETCH_CLASS, "Manga");
 
-    $response->closeCursor();
-    return $mangas;
-}
-
-
-// La fonction getArticle retourne un article sur base d'un filtre.
-function getMangaById($id) {
-
-    $mangas = getMangas();
-    foreach ($mangas as $manga) {
-        
-        if (strtolower($id) == strtolower($manga->Title)) {
-           return $manga;
-        }
+        $response->closeCursor();
+        return $mangas;
     }
-}
 
+
+    // Retourne un manga sur base d'un filtre.
+    public function getMangaById($id) {
+
+        $response = getDB()->prepare('SELECT * FROM manga WHERE id = :id');
+        $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Manga');
+        $response->execute([':id' => $id]);
+        $manga = $response->fetch();
+
+        $response->closeCursor();
+
+        return $manga;    
+    }
+
+}
 ?>

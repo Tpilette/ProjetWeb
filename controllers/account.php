@@ -1,15 +1,16 @@
 <?php 
 require 'models/user.php';
 if(!empty($_GET) && !empty($_GET['login'])){
-    $user = getUserById($_GET['login']);
+    $user = User::getUserById($_GET['login']);
+    
 }
 else {
-    $user = getUserById($_SESSION['login']);
+    $user = User::getUserById($_SESSION['login']);
 }
 
-if($user->login != $_SESSION['login']) {
-    $title = "Utilisateur ".$user->login;
-}
+// if($user->login != $_SESSION['login']) {
+//     $title = "Utilisateur ".$user->login;
+// }
 
 
 $email = $user->email;

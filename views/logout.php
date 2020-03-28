@@ -1,6 +1,6 @@
 <?php
-session_start();
-session_unset(); //$_SESSION = [];
-session_destroy();
-header('Location:'.ROOT_PATH.'welcome');
+    session_start();
+    session_unset();
+    session_destroy();
+    header('Location:'.ROOT_PATH.'welcome');
 ?>

@@ -1,11 +1,5 @@
-<?php
-if(session_id() == '') {session_start();}
-if(!empty($_SESSION['login'])){
-    header("Location: ".ROOT_PATH."welcome");
-    exit();
-}
+<?php ob_start() ?>
 
-ob_start()?>
 <form action="<?=ROOT_PATH.'login'?>" method="POST">
     <div class="form-group">
         <label for="idlogin">Login</label>
@@ -17,8 +11,9 @@ ob_start()?>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 <?php
-$title = "Se connecter";
-$content = ob_get_clean();
-include 'includes/template.php';
+    $title = "Se connecter";
+    $content = ob_get_clean();
+    include 'includes/template.php';
 ?>

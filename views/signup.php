@@ -1,12 +1,4 @@
-<?php
-
-if(session_id() == '') {session_start();}
-if(!empty($_SESSION['login'])){
-    header("Location: ".ROOT_PATH."welcome");
-    exit();
-}
-ob_start()
-?>
+<?php ob_start() ?>
 
 
 <form action="<?=ROOT_PATH.'signup'?>" method="POST">
@@ -31,7 +23,7 @@ ob_start()
 
 
 <?php
-$title = "S'inscrire";
-$content = ob_get_clean();
-include 'includes/template.php';
+    $title = "S'inscrire";
+    $content = ob_get_clean();
+    include 'includes/template.php';
 ?>

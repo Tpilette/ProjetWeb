@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `manga` (
   `Volume` int(10) DEFAULT NULL,
   `Prix` double(3,2) DEFAULT NULL,
   `Auteur` varchar(100) DEFAULT NULL,
+  `ImageData` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -79,49 +80,49 @@ CREATE TABLE IF NOT EXISTS `manga` (
 -- Déchargement des données de la table `manga`
 --
 
-INSERT INTO `manga`(`Id`, `Title`, `Editeur`, `Volume`, `Prix`, `Auteur`) VALUES 
-(0,'Card Captor Sakura','Pika',1,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',2,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',3,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',4,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',5,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',6,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',7,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',8,7.20 ,'CLAMP'),
-(0,'Card Captor Sakura','Pika',9,7.20 ,'CLAMP'),
+INSERT INTO `manga`(`Title`, `Editeur`, `Volume`, `Prix`, `Auteur`, `ImageData`) VALUES 
+('Card Captor Sakura','Pika',1,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',2,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',3,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',4,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',5,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',6,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',7,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',8,7.20 ,'CLAMP','Card_Captor_Sakura'),
+('Card Captor Sakura','Pika',9,7.20 ,'CLAMP','Card_Captor_Sakura'),
 
-(0,'Frau Faust','Pika',1,7.20 ,'Kore Yamazaki'),
-(0,'Frau Faust','Pika',2,7.20 ,'Kore Yamazaki'),
-(0,'Frau Faust','Pika',3,7.20 ,'Kore Yamazaki'),
-(0,'Frau Faust','Pika',4,7.20 ,'Kore Yamazaki'),
+('Frau Faust','Pika',1,7.20 ,'Kore Yamazaki','Frau_Faust'),
+('Frau Faust','Pika',2,7.20 ,'Kore Yamazaki','Frau_Faust'),
+('Frau Faust','Pika',3,7.20 ,'Kore Yamazaki','Frau_Faust'),
+('Frau Faust','Pika',4,7.20 ,'Kore Yamazaki','Frau_Faust'),
 
-(0,'Beast Master','Kaze Manga',1,7.20 ,'Kyousuke Motomi'),
-(0,'Beast Master','Kaze Manga',2,7.20 ,'Kyousuke Motomi'),
+('Beast Master','Kaze Manga',1,7.20 ,'Kyousuke Motomi','Beast_Master'),
+('Beast Master','Kaze Manga',2,7.20 ,'Kyousuke Motomi','Beast_Master'),
 
-(0,'Beyond Evil','Kaze Manga',1,7.20 ,'Miura'),
-(0,'Beyond Evil','Kaze Manga',2,7.20 ,'Miura'),
-(0,'Beyond Evil','Kaze Manga',3,7.20 ,'Miura'),
-(0,'Beyond Evil','Kaze Manga',4,7.20 ,'Miura'),
+('Beyond Evil','Kaze Manga',1,7.20 ,'Miura','Beyond_Evil'),
+('Beyond Evil','Kaze Manga',2,7.20 ,'Miura','Beyond_Evil'),
+('Beyond Evil','Kaze Manga',3,7.20 ,'Miura','Beyond_Evil'),
+('Beyond Evil','Kaze Manga',4,7.20 ,'Miura','Beyond_Evil'),
 
 
-(0,'Mushoku Tensei','DokiDoki',1,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',2,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',3,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',4,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',5,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',6,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',7,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',8,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',9,7.20 ,'Fujikawa Yuka'),
-(0,'Mushoku Tensei','DokiDoki',10,7.20 ,'Fujikawa Yuka'),
+('Mushoku Tensei','DokiDoki',1,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',2,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',3,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',4,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',5,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',6,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',7,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',8,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',9,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
+('Mushoku Tensei','DokiDoki',10,7.20 ,'Fujikawa Yuka','Mushoku_Tensei'),
 
-(0,'Goblin Slayer','Kurokawa',1,7.20 ,'Kumo Kagyu'),
-(0,'Goblin Slayer','Kurokawa',2,7.20 ,'Kumo Kagyu'),
-(0,'Goblin Slayer','Kurokawa',3,7.20 ,'Kumo Kagyu'),
-(0,'Goblin Slayer','Kurokawa',1,7.20 ,'Kumo Kagyu'),
-(0,'Goblin Slayer','Kurokawa',5,7.20 ,'Kumo Kagyu'),
-(0,'Goblin Slayer','Kurokawa',6,7.20 ,'Kumo Kagyu'),
-(0,'Goblin Slayer','Kurokawa',7,7.20 ,'Kumo Kagyu');
+('Goblin Slayer','Kurokawa',1,7.20 ,'Kumo Kagyu','Goblin_Slayer'),
+('Goblin Slayer','Kurokawa',2,7.20 ,'Kumo Kagyu','Goblin_Slayer'),
+('Goblin Slayer','Kurokawa',3,7.20 ,'Kumo Kagyu','Goblin_Slayer'),
+('Goblin Slayer','Kurokawa',1,7.20 ,'Kumo Kagyu','Goblin_Slayer'),
+('Goblin Slayer','Kurokawa',5,7.20 ,'Kumo Kagyu','Goblin_Slayer'),
+('Goblin Slayer','Kurokawa',6,7.20 ,'Kumo Kagyu','Goblin_Slayer'),
+('Goblin Slayer','Kurokawa',7,7.20 ,'Kumo Kagyu','Goblin_Slayer');
 
 -- --------------------------------------------------------
 
@@ -203,8 +204,8 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-CREATE USER 'appDbUser'@'%' IDENTIFIED BY 'Pasw123!'
+-- CREATE USER 'appDbUser'@'%' IDENTIFIED BY 'Pasw123!'
 
-GRANT ALL PRIVILEGES ON *.* TO 'appDbUser'@'%' IDENTIFIED BY PASSWORD '*23C9B10D09D356BADAB731104210C52CC8E7CE89' WITH GRANT OPTION;
+-- GRANT ALL PRIVILEGES ON *.* TO 'appDbUser'@'%' IDENTIFIED BY PASSWORD '*23C9B10D09D356BADAB731104210C52CC8E7CE89' WITH GRANT OPTION;
 
-GRANT ALL PRIVILEGES ON `projetweb`.* TO 'appDbUser'@'%';
+-- GRANT ALL PRIVILEGES ON `projetweb`.* TO 'appDbUser'@'%';

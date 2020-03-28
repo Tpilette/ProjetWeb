@@ -1,11 +1,5 @@
-<?php
-if(session_id() == '') {session_start();}
-if(empty($_SESSION['login'])){
-  header("Location: ".ROOT_PATH."login");
-    exit();
-}
-?>
 <?php ob_start(); ?>
+
 <h3>Liste des utilisateurs</h3>
 <table class="table">
   <thead>
@@ -18,7 +12,6 @@ if(empty($_SESSION['login'])){
   </thead>
   <tbody>
 <?php foreach($users as $user):?>
-<?php var_dump('test controller'.$user->login.' after');?>
     <tr>
       <th scope="row"><?= $user->id ?></th>
       <td><?= $user->login ?></td>
@@ -59,7 +52,7 @@ if(empty($_SESSION['login'])){
   </tbody>
 </table>
 <?php
-$title = "Administration";
-$content = ob_get_clean();
-include 'includes/template.php';
+  $title = "Administration";
+  $content = ob_get_clean();
+  include 'includes/template.php';
 ?>

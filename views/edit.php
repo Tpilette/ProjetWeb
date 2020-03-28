@@ -1,10 +1,3 @@
-<?php
-if(session_id() == '') {session_start();}
-if(empty($_SESSION['login'])){
-    header("Location:".ROOT_PATH."welcome");
-    exit();
-}
-?>
 <?php ob_start(); ?>
 
 <form action="<?=ROOT_PATH.'edit'?>" method="POST">
@@ -26,8 +19,9 @@ if(empty($_SESSION['login'])){
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 <?php
-$title = "Editer";
-$content = ob_get_clean();
-include "includes/template.php";
+    $title = "Editer";
+    $content = ob_get_clean();
+    include "includes/template.php";
 ?>

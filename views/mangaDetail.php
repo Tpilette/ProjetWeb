@@ -11,11 +11,8 @@
 </dl>
 <img src="../image/<?= $manga->imageData?>_<?= $manga->volume ?>" height="45%" width="25%">
 <br>
-<?php 
-    if($_SESSION['role'] == 1){
-     echo '<button>Ajouter au panier</button>';
-    }
- ?>
+<br>
+<button>Ajouter au panier</button>
 
 <?php
     $title="Detail de ".$manga->title;

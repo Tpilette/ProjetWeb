@@ -12,8 +12,9 @@
                 //Authentification OK
                 $_SESSION['login'] = $user->login;
                 $_SESSION['userId'] = $user->id;
-                $_SESSION['message'] = "Bienvenue ".$user->login;
                 $_SESSION['role'] = $user->role;
+                $_SESSION['shoppingCart'] = [23,22,21];    
+                $_SESSION['message'] = "Bienvenue ".$user->login;
                 header("Location: ".ROOT_PATH."welcome");
                 exit();
             }

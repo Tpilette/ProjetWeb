@@ -49,7 +49,7 @@
                 </div>
             </div>
             <!-- Contenu -->
-                <?php echo $content; ?>
+            <?php echo $content; ?>
         </main>
         <footer class="footer">
             <div class="container">

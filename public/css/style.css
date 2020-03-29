@@ -10,12 +10,12 @@
     margin-left: 15px;
 }
 
-.jumbotron{
-    width : 105% !important;
-}
-
 .card-img-top {
     width: auto;
-    height: 15vw;
+    height: 28em;
     object-fit: cover;
+}
+
+.grey{
+    background-color: gray;
 }

@@ -2,13 +2,29 @@
 require 'database.php';
 
 class Manga {
-    public $Id;
-    public $Title;
-    public $Editeur;
-    public $Volume;
-    public $Prix;
-    public $Auteur;
-    public $ImageData;
+
+    public $id;
+    public $title;
+    public $editeur;
+    public $volume;
+    public $prix;
+    public $auteur;
+    public $imageData;
+      
+    public function  __construct($data = null){
+
+        if(is_array($data)){
+
+            $this->id = $data['id'];
+            $this->title = $data['title'];
+            $this->editeur = $data['editeur'];
+            $this->volume = $data['volume'];
+            $this->prix = $data['prix'];
+            $this->auteur = $data['auteur'];
+            $this->imageData = $data['imageData'];
+        }        
+    }
+
 
 
         // retourne l'ensemble des données.

@@ -6,13 +6,12 @@
         if(!empty($_POST['login']) && !empty($_POST['password']))
         {
             $user = User::getUserById($_POST['login']);
-            var_dump($user);
-
 
             if($user && password_verify($_POST['password'], $user->password))
             {
                 //Authentification OK
                 $_SESSION['login'] = $user->login;
+                $_SESSION['userId'] = $user->id;
                 $_SESSION['message'] = "Bienvenue ".$user->login;
                 $_SESSION['role'] = $user->role;
                 header("Location: ".ROOT_PATH."welcome");

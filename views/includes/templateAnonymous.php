@@ -21,35 +21,15 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>manga">Nos mangas</a></li>
                 </ul>
-                <?php
-                    if ($_SESSION['role'] == 2 ) {
-                        echo '<li class="nav-item"><a class="nav-link" href="'.ROOT_PATH.'admin">Menu d\'administration</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link" href="'.ROOT_PATH.'statistiques">Statistiques</a></li>';
-                        echo '<li class="nav-item"><a class="nav-link" href="'.ROOT_PATH.'commandeListing">Listing commandes</a></li>';
-                    }
-                    else{
-
-                        echo '<a href="'.ROOT_PATH.'panier" class="btn btn-outline-info my-2 my-sm-0">Mon panier</a>';  
-                        echo '<a href="'.ROOT_PATH.'commande" class="btn btn-outline-info my-2 my-sm-0">Mes commandes</a>';                        
-                    }    
-                    
-                    echo '<a href="'.ROOT_PATH.'account" class="btn btn-outline-info my-2 my-sm-0">Mon compte</a>';
-                    echo '<a href="'.ROOT_PATH.'logout" class="btn btn-outline-success my-2 my-sm-0">Se déconnecter</a>';               
-                   
-                ?>
+                <a href="<?=ROOT_PATH?>signup" class="btn btn-outline-secondary my-2 my-sm-0">S'inscrire</a>
+                <a href="<?=ROOT_PATH?>login" class="btn btn-outline-success my-2 my-sm-0">Se connecter</a>            
             </div>
         </nav>
         <main role="main" class="container">
-            <!-- header jumbotron -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="jumbotron">
-                        <h1><?php echo $title; ?></h1>
-                    </div>
-                </div>
-            </div>
-            <!-- Contenu -->
-                <?php echo $content; ?>
+        <div class="jumbotron">
+            <h1><?php echo $title; ?></h1>
+            <?php echo $content; ?>
+        </div>
         </main>
         <footer class="footer">
             <div class="container">

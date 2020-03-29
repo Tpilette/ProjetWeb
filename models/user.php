@@ -24,7 +24,7 @@ class User
             $this->login = $data['login'];
             $this->email = $data['email'];
             $this->password = $data['password'];
-            $this->role = $data['valeur'];
+            $this->role = $data['role'];
             $this->nom = $data['nom'] != null? $data['nom'] : '';
             $this->prenom = $data['prenom'] != null? $data['prenom'] : '';
             $this->adresse = $data['adresse'] != null? $data['adresse'] : '';

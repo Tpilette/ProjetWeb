@@ -2,19 +2,14 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8">
+		<div class="col-xs-12">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">
 						<div class="row">
 							<div class="col-xs-6">
 								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
-							</div>
-							<div class="col-xs-6">
-								<button type="button" class="btn btn-primary btn-sm btn-block">
-									<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
-								</button>
-							</div>
+							</div>							
 						</div>
 					</div>
 				</div>
@@ -56,19 +51,6 @@
 							<div class="col-xs-2">
 								<button type="button" class="btn btn-link btn-xs">
 									<span class="glyphicon glyphicon-trash"> </span>
-								</button>
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="row">
-						<div class="text-center">
-							<div class="col-xs-9">
-								<h6 class="text-right">Added items?</h6>
-							</div>
-							<div class="col-xs-3">
-								<button type="button" class="btn btn-default btn-sm btn-block">
-									Update cart
 								</button>
 							</div>
 						</div>

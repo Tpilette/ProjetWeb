@@ -3,7 +3,7 @@
 <div class="card-deck">  
 
   <?php foreach ($mangas as $manga): ?>
-    <div class="col-4">
+    <div class="col-3">
      <div class="card">
        <div class="card-header">
             <?= $manga->title ?>
@@ -22,5 +22,5 @@
 <?php
   $title="Les mangas";
   $content= ob_get_clean();
-  include 'includes/template.php';
+  include 'includes/templateAnonymous.php';
  ?>

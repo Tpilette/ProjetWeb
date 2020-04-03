@@ -59,6 +59,12 @@ class Commande {
         return $commande;    
     }
 
+
+
+    public function validateCart(){
+        
+    }
+
 }
 
 

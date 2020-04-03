@@ -22,7 +22,5 @@
 </table>
 
 <?php
-  $title = "Historique de vos commandes";
   $content = ob_get_clean();
-  include 'includes/template.php';
 ?>

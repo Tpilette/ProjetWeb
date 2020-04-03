@@ -19,7 +19,6 @@ class User
     public function  __construct($data = null){
 
         if(is_array($data)){
-
             $this->id = $data['id'];
             $this->login = $data['login'];
             $this->email = $data['email'];
@@ -36,7 +35,7 @@ class User
     public function getUsers() {
         try
         {
-            $response = getDB()->query('SELECT * FROM personne u INNER JOIN ROLE r ON r.id = u.role');
+            $response = getDB()->query('SELECT id,login,password,email,nom,prenom,adresse,numTel,dateNaissance,role FROM personne');
     
             $users = $response->fetchAll(PDO::FETCH_CLASS, 'User');
     
@@ -53,7 +52,7 @@ class User
     public function getUserById($login) {
         try
         {
-            $response = getDB()->prepare('SELECT * FROM personne WHERE login = :login');
+            $response = getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role FROM personne WHERE login = :login');
             $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');    
             $response->execute([':login' => $login]);
             $user = $response->fetch();
@@ -69,27 +68,24 @@ class User
     }
     
     
-    
     public function addUser($login,$pasword,$email){
     
         // ici faire l'insert en db
-        $reponse = getDB()->prepare('INSERT INTO personne SET login = :login,password = :password,email = :email,role = 1');
-    
-        $reponse->execute([':login' => $login, ':password' => password_hash($pasword, PASSWORD_DEFAULT), ':email' => $email]);
-        $reponse->closeCursor(); 
+        $response = getDB()->prepare('INSERT INTO personne SET login = :login,password = :password,email = :email,role = 1');
+        $response->execute([':login' => $login, ':password' => password_hash($pasword, PASSWORD_DEFAULT), ':email' => $email]);
+
+        $response->closeCursor(); 
     }
     
     public function checkLoginExist($login){
         //vérifier que le login n'existe pas
-        $reponse = getDB()->prepare('SELECT * FROM personne WHERE login = :login');
-        $reponse->execute([':login' => $login]);
-        $user = $reponse->fetch();
-        $reponse->closeCursor(); // Termine le traitement de la requête
+        $response = getDB()->prepare('SELECT * FROM personne WHERE login = :login');
+        $response->execute([':login' => $login]);
+        $user = $response->fetch();
+        $response->closeCursor(); // Termine le traitement de la requête
         return $user;
         
     }
-    
-    
     
     public function editUser($user,$login,$email,$password,$confirmPassword) {
         
@@ -118,10 +114,10 @@ class User
     
         public function login($login){
     
-        $reponse = $bdd->prepare('SELECT * FROM personne WHERE login = :login');
-        $reponse->execute([':login' =>$login]);
-        $user = $reponse->fetch();
-        $reponse->closeCursor(); 
+        $response = $bdd->prepare('SELECT * FROM personne WHERE login = :login');
+        $response->execute([':login' =>$login]);
+        $user = $response->fetch();
+        $response->closeCursor(); 
         
         return $user;
     }

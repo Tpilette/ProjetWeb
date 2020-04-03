@@ -23,5 +23,4 @@
 <?php
     $title = "Editer";
     $content = ob_get_clean();
-    include "includes/template.php";
 ?>

@@ -27,5 +27,4 @@
 <?php
   $title = "Listing commande client";
   $content = ob_get_clean();
-  include 'includes/template.php';
 ?>

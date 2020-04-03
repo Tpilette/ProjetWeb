@@ -43,7 +43,6 @@
 </div>
 
 <?php
-    $title = "Profil ";
+    $title = "Profil de ".$user->prenom;
     $content = ob_get_clean();
-    include 'includes/template.php';
 ?>

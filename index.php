@@ -10,6 +10,7 @@ if (!count($segments) or $segments[0] == 'index'){
 // Exemple URL: http://monprojet.be/article/pomme/edit
 define('REQ_TYPE', $segments[0] ?? Null);
 define('REQ_TYPE_ID', $segments[1] ?? Null);
+// define('REQ_ACTION', $segments[2] ?? Null);
 
 // with req_action 
 // define('REQ_ACTION', $segments[2] ?? Null);

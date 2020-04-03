@@ -24,5 +24,4 @@
 <?php
     $title="Detail de la commande numéro ".$commande->id;
     $content= ob_get_clean();
-    include 'includes/template.php';
 ?>

@@ -15,5 +15,4 @@
 <?php
     $title = "Se connecter";
     $content = ob_get_clean();
-    include 'includes/templateAnonymous.php';
 ?>

@@ -25,5 +25,4 @@
 <?php
     $title = "S'inscrire";
     $content = ob_get_clean();
-    include 'includes/templateAnonymous.php';
 ?>

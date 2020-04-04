@@ -7,7 +7,7 @@
     if(!empty($_POST)) {
         if(!empty($_POST['login']) && !empty($_POST['password']))
         {
-            $user = User::getUserById($_POST['login']);
+            $user = User::getUserByLogin($_POST['login']);
             
             if($user && password_verify($_POST['password'], $user->password))
             {

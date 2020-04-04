@@ -1,4 +1,5 @@
 <?php 
+    $title = "Listing commande";
     require 'models/commande.php';
     include 'views/includes/header.php';
     include 'views/includes/navbarAdmin.php';

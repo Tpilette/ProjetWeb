@@ -1,6 +1,6 @@
 <?php
 
-require 'database.php';
+require_once 'database.php';
 
 class User
 {
@@ -35,7 +35,7 @@ class User
     public function getUsers() {
         try
         {
-            $response = getDB()->query('SELECT id,login,password,email,nom,prenom,adresse,numTel,dateNaissance,role FROM personne');
+            $response = Database::getDB()->query('SELECT id,login,password,email,nom,prenom,adresse,numTel,dateNaissance,role FROM personne');
     
             $users = $response->fetchAll(PDO::FETCH_CLASS, 'User');
     
@@ -48,13 +48,30 @@ class User
         }
     }
     
-    
-    public function getUserById($login) {
+    public function getUserByLogin($login) {
         try
         {
-            $response = getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role FROM personne WHERE login = :login');
+            $response = Database::getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role FROM personne WHERE login = :login');
             $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');    
             $response->execute([':login' => $login]);
+            $user = $response->fetch();
+    
+            $response->closeCursor();
+    
+            return $user;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+    
+    public function getUserById($userId) {
+        try
+        {
+            $response = Database::getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role FROM personne WHERE id = :id');
+            $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');    
+            $response->execute([':id' => $userId]);
             $user = $response->fetch();
     
             $response->closeCursor();
@@ -71,7 +88,7 @@ class User
     public function addUser($login,$pasword,$email){
     
         // ici faire l'insert en db
-        $response = getDB()->prepare('INSERT INTO personne SET login = :login,password = :password,email = :email,role = 1');
+        $response = Database::getDB()->prepare('INSERT INTO personne SET login = :login,password = :password,email = :email,role = 1');
         $response->execute([':login' => $login, ':password' => password_hash($pasword, PASSWORD_DEFAULT), ':email' => $email]);
 
         $response->closeCursor(); 
@@ -79,7 +96,7 @@ class User
     
     public function checkLoginExist($login){
         //vérifier que le login n'existe pas
-        $response = getDB()->prepare('SELECT * FROM personne WHERE login = :login');
+        $response = Database::getDB()->prepare('SELECT * FROM personne WHERE login = :login');
         $response->execute([':login' => $login]);
         $user = $response->fetch();
         $response->closeCursor(); // Termine le traitement de la requête
@@ -96,7 +113,7 @@ class User
             else
             {
                 //C'est ici qu'on va faire l'update de l'utilisateur.
-                $response = getDB()->prepare('UPDATE personne SET email = :email, password = :password WHERE login = :login');
+                $response = Database::getDB()->prepare('UPDATE personne SET email = :email, password = :password WHERE login = :login');
                 if ($password) {
                     $password = password_hash($password, PASSWORD_DEFAULT);
                 }
@@ -114,7 +131,7 @@ class User
     
         public function login($login){
     
-        $response = $bdd->prepare('SELECT * FROM personne WHERE login = :login');
+        $response = Database::getDB()->prepare('SELECT * FROM personne WHERE login = :login');
         $response->execute([':login' =>$login]);
         $user = $response->fetch();
         $response->closeCursor(); 

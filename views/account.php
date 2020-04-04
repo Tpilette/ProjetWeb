@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                     <a href="<?=ROOT_PATH?>edit/<?= $user->login?>" class="btn btn-warning">Editer</a>
+                     <a href="<?=ROOT_PATH?>editUser/<?= $user->login?>" class="btn btn-warning">Editer</a>
                 </div>
             </div>
        </div>

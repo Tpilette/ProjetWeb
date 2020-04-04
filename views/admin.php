@@ -18,33 +18,9 @@
       <td><?= $user->email ?></td>
       <td>
           <a href="<?=ROOT_PATH?>account/<?= $user->login ?>" class="btn btn-primary">Voir<a>
-          <a href="<?=ROOT_PATH?>edit/<?= $user->login ?>" class="btn btn-warning">Editer<a>
+          <a href="<?=ROOT_PATH?>editUser/<?= $user->login ?>" class="btn btn-warning">Editer<a>
           <?php if($_SESSION['login'] != $user->login): ?>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal<?= $user->id?>">
-              Supprimer
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="modal<?= $user->id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Supprimer</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                      Voulez-vous vraiment supprimer l'utilisateur <?= $user->login?> ?
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                    <a href="<?=ROOT_PATH?>delete?login=<?= $user->login?>" class="btn btn-danger">Supprimer<a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <a href="<?=ROOT_PATH?>deleteUser/<?= $user->login ?>" class="btn btn-danger">Supprimer<a>
           <?php endif?>
       </td>
     </tr>

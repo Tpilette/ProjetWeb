@@ -1,14 +1,27 @@
 <?php 
-    require 'models/commande.php';
-    require 'models/contenuCommande.php';
+    require_once 'models/contenuCommande.php';
+    require_once 'models/commande.php';
+    require_once 'models/user.php';
+    require_once 'models/manga.php';
 
     if(!empty($_POST['action'] =="validerPanier")){
 
-        Commande::validateCart($_SESSION['shoppingCart'],$_SESSION['userId']);
+        //add content to commande
+        $commandeId = Commande::validateCart($_SESSION['userId'],$_SESSION['totalPanier']);
+
+        // get listing manga pour le contenu de la commande
+        $listManga = Manga::getMangasFilterById($_SESSION['shoppingCart']);
+
+        //ajouter résultat a la table de contenu
+        ContenuCommande::addContenuCommande($listManga,$commandeId);
+        $_SESSION['shoppingCart'] = [];
+        $title = "Confirmation commande ".$commandeId;
+        include 'views/includes/header.php';
+        include 'views/includes/navbarUser.php';
         include 'views/commandeValide.php';
     }
 
-    if (!REQ_TYPE_ID) {
+    elseif (!REQ_TYPE_ID) {
 
         $commandes = Commande::getListingCommandeUser($_SESSION['userId']);
         
@@ -18,9 +31,19 @@
         include 'views/commandes.php';
     } 
     else {
-        $title = "Contenu de votre commande";
+        $title = "Contenu de la commande";
         include 'views/includes/header.php';
-        include 'views/includes/navbarUser.php';
+        
+        if ($_SESSION['role'] == ADMIN) {
+            include 'views/includes/navbarAdmin.php';
+        } 
+        else 
+        {
+            include 'views/includes/navbarUser.php';
+        }
+        
+
+        
         $commande = Commande::getCommandeById(REQ_TYPE_ID);
         $commande->contenu = ContenuCommande::getContenuCommande($commande->id);
         include 'views/commandeDetail.php';

@@ -1,5 +1,5 @@
 <?php
-require 'database.php';
+require_once 'models/database.php';
 
 
 class Commande {
@@ -25,7 +25,7 @@ class Commande {
     // retourne l'ensemble des données.
     public function getListingCommande() {
 
-        $response = getDB()->prepare('SELECT * FROM commande');
+        $response = Database::getDB()->prepare('SELECT * FROM commande');
         $response->execute();
         $commandes = $response->fetchAll(PDO::FETCH_CLASS, "Commande");
 
@@ -36,11 +36,11 @@ class Commande {
      // retourne l'ensemble des données d'un client.
      public function getListingCommandeUser($userId) {
 
-        $response = getDB()->prepare('SELECT * FROM commande WHERE idUser =:id');
+        $response =  Database::getDB()->prepare('SELECT * FROM commande WHERE idUser =:id');
         $response->execute([':id'=>$userId]);
         $commandes = $response->fetchAll(PDO::FETCH_CLASS, "Commande");
-
         $response->closeCursor();
+
         return $commandes;
     }
 
@@ -49,7 +49,7 @@ class Commande {
     public function getCommandeById($id) {
 
         //
-        $response = getDB()->prepare('SELECT * FROM commande WHERE id = :id');
+        $response = Database::getDB()->prepare('SELECT * FROM commande WHERE id = :id');
         $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Commande');
         $response->execute([':id' => $id]);
         $commande = $response->fetch();
@@ -60,9 +60,25 @@ class Commande {
     }
 
 
+    public function addCommande($userId,$total,$date) {
 
-    public function validateCart(){
+        $response = Database::getDB()->prepare('INSERT INTO commande SET date = :date,idUser = :idUser,montant= :total');
+        $response->execute([':date' => $date,':idUser' => $userId,':total' => $total]);
+   
+        $response->closeCursor(); 
+    }
+
+
+
+    public function validateCart($userId,$total){
         
+        self::addCommande($userId,$total,date("Y-m-d"));
+        $commandes = self::getListingCommandeUser($userId);
+        $commande = $commandes[count($commandes)-1];
+
+
+        return $commande->id;
+      
     }
 
 }

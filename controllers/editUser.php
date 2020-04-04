@@ -2,7 +2,7 @@
     require "models/user.php";
     include 'views/includes/header.php';
 
-    if($_SESSION['role'] == 1)
+    if($_SESSION['role'] == USER)
         {
 
             include 'views/includes/navbarUser.php';
@@ -16,7 +16,7 @@
 
     if(!REQ_TYPE_ID){
     
-        $us = User::getUserById($_POST['login']);
+        $us = User::getUserByLogin($_POST['login']);
         $result = User::editUser($us,$_POST['login'],$_POST['email'],$_POST['password'],$_POST['confirmPassword']);
 
         $user = $result;
@@ -24,8 +24,8 @@
     }
     else
     {
-        $user = User::getUserById(REQ_TYPE_ID);
-        include 'views/edit.php';
+        $user = User::getUserByLogin(REQ_TYPE_ID);
+        include 'views/editUser.php';
     }
 
 include 'views/includes/content.php';

@@ -17,11 +17,11 @@
 
     require 'models/user.php';
     if(!empty($_GET) && !empty($_GET['login'])){
-        $user = User::getUserById($_GET['login']);
+        $user = User::getUserByLogin($_GET['login']);
         
     }
     else {
-        $user = User::getUserById($_SESSION['login']);
+        $user = User::getUserByLogin($_SESSION['login']);
     }
 
 

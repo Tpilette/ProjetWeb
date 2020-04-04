@@ -5,7 +5,7 @@ include 'views/includes/header.php';
 
 if(!empty($_SESSION['login']))
 {
-    if($_SESSION['role'] == 1)
+    if($_SESSION['role'] == USER)
     {
         include 'views/includes/navbarUser.php';
     }

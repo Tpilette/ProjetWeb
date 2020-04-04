@@ -18,7 +18,13 @@ class Panier {
 
     public function addToCart($mangaId){
 
-        array_push($_SESSION['shoppingCart'],$mangaId);
+        if(!in_array($mangaId,$_SESSION['shoppingCart'])){
+            array_push($_SESSION['shoppingCart'],$mangaId);
+
+        }
+        else{
+            $errorMessage = "Cet article est déjà dans votre panier.";
+        }
     }
 
 

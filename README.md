@@ -22,11 +22,7 @@ Modifier fichier httpd.conf dans la section "Secure (SSL/TLS) connections" et ra
 Editer fichier host dans C:\Windows\System32\drivers\etc et ajouter : 127.0.0.1 projetweb.test
 <br>
 éditer fichier : http-vshosts.conf
-ajouter à la fin : 
-"#####
-## monprojet.test
-## DOMAINE de monprojet
-#####"
+ajouter à la fin (en adaptant le path où se trouvent les sources du projet): 
 
 <Directory "C:\Users\Thibault\source\repos\projetweb">
     AllowOverride All

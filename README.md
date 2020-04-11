@@ -23,7 +23,7 @@ Editer fichier host dans C:\Windows\System32\drivers\etc et ajouter : 127.0.0.1 
 <br>
 éditer fichier : http-vshosts.conf
 ajouter à la fin (en adaptant le path où se trouvent les sources du projet): 
-
+<code>
 <Directory "C:\Users\Thibault\source\repos\projetweb">
     AllowOverride All
     Options Indexes MultiViews FollowSymLinks
@@ -34,6 +34,6 @@ ajouter à la fin (en adaptant le path où se trouvent les sources du projet):
     DocumentRoot C:\Users\Thibault\source\repos\projetweb
     ServerName projetweb.test
 </VirtualHost>
-
+</code>
 <br>
 Url "home" : http://projetweb.test/ProjetECommerce/

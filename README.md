@@ -21,4 +21,23 @@ Modifier fichier httpd.conf dans la section "Secure (SSL/TLS) connections" et ra
 <br>
 Editer fichier host dans C:\Windows\System32\drivers\etc et ajouter : 127.0.0.1 projetweb.test
 <br>
+éditer fichier : http-vshosts.conf
+ajouter à la fin : 
+#####
+## monprojet.test
+## DOMAINE de monprojet
+#####
+
+<Directory "C:\Users\Thibault\source\repos\projetweb">
+    AllowOverride All
+    Options Indexes MultiViews FollowSymLinks
+    Require all granted
+</Directory>
+
+<VirtualHost *:80>
+    DocumentRoot C:\Users\Thibault\source\repos\projetweb
+    ServerName projetweb.test
+</VirtualHost>
+
+<br>
 Url "home" : http://projetweb.test/ProjetECommerce/

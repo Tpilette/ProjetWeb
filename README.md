@@ -23,10 +23,10 @@ Editer fichier host dans C:\Windows\System32\drivers\etc et ajouter : 127.0.0.1 
 <br>
 éditer fichier : http-vshosts.conf
 ajouter à la fin : 
-#####
+"#####
 ## monprojet.test
 ## DOMAINE de monprojet
-#####
+#####"
 
 <Directory "C:\Users\Thibault\source\repos\projetweb">
     AllowOverride All

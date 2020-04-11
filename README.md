@@ -28,11 +28,11 @@ ajouter à la fin (en adaptant le path où se trouvent les sources du projet):
     AllowOverride All<br>
     Options Indexes MultiViews FollowSymLinks<br>
     Require all granted<br>
-""<//Directory>""
+</Directory>
 
 <VirtualHost *:80><br>
     DocumentRoot C:\Users\Thibault\source\repos\projetweb<br>
     ServerName projetweb.test<br>
-""<//VirtualHost>""
+<//VirtualHost>
 <br>
 Url "home" : http://projetweb.test/ProjetECommerce/

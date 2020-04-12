@@ -1,5 +1,6 @@
 <?php
 require_once 'database.php';
+require_once 'fileHandler.php';
 
 class Manga {
 
@@ -60,6 +61,29 @@ class Manga {
         $response->closeCursor();
 
         return $manga;    
+    }
+
+    public function create($auteur,$editeur,$genre,$prix,$title,$volume,$image) {
+
+        $response = Database::getDB()->prepare('INSERT INTO manga SET auteur=:auteur, editeur=:editeur, genre=:genre,imageData=:imageData, prix=:prix, title=:title,volume=:volume');
+        $imageData = str_replace(' ', '_', $title).$volume;
+        $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Manga');
+        $response->execute([':auteur' => $auteur, ':editeur' => $editeur, ':genre' => $genre, ':imageData' => $imageData, ':prix' => $prix, ':title' => $title, ':volume' => $volume]);
+       
+        $response->closeCursor();
+        
+        //FileHandler::addPicture($imageData,$image);
+
+        return $manga;    
+    }
+
+    public function delete($id) {
+
+        $response = Database::getDB()->prepare('DELETE * FROM manga WHERE id = :id');
+        $response->execute([':id' => $id]);
+        $response->closeCursor();
+
+        return;    
     }
 
 }

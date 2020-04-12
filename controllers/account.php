@@ -1,12 +1,10 @@
 <?php 
-
-
+    require 'models/user.php';  
     $title = "Profil";
     include 'views/includes/header.php';
 
-    if($_SESSION['role'] == 1)
+    if($_SESSION['role'] == USER)
     {
-
         include 'views/includes/navbarUser.php';
     }
     else
@@ -15,9 +13,8 @@
     }
 
 
-    require 'models/user.php';
-    if(!empty($_GET) && !empty($_GET['login'])){
-        $user = User::getUserByLogin($_GET['login']);
+    if(REQ_TYPE_ID){
+        $user = User::getUserByLogin(REQ_TYPE_ID);
         
     }
     else {

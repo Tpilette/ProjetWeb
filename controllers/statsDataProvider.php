@@ -1,12 +1,9 @@
 <?php 
 
 $mangas = [
-    ['Pomme', 12],
-    ['Poire',25],
-    ['Peche', 12],
-    ['Ananas', 5],
-    ['Banane', 11],
-    ['Kumkwat', 2]
+    ['Sakura', 12],
+    ['UqHolder',25],
+    ['Beast Master', 12]
 ];
     require 'models/manga.php';
     // $mangas = getMangas();

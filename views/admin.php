@@ -18,9 +18,9 @@
       <td><?= $user->email ?></td>
       <td>
           <a href="<?=ROOT_PATH?>account/<?= $user->login ?>" class="btn btn-primary">Voir<a>
-          <a href="<?=ROOT_PATH?>editUser/<?= $user->login ?>" class="btn btn-warning">Editer<a>
+          <a href="<?=ROOT_PATH?>user/<?= $user->login ?>/edit" class="btn btn-warning">Editer<a>
           <?php if($_SESSION['login'] != $user->login): ?>
-            <a href="<?=ROOT_PATH?>deleteUser/<?= $user->login ?>" class="btn btn-danger">Supprimer<a>
+            <a href="<?=ROOT_PATH?>user/<?= $user->login ?>/delete" class="btn btn-danger">Supprimer<a>
           <?php endif?>
       </td>
     </tr>

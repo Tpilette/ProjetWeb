@@ -35,7 +35,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                     <a href="<?=ROOT_PATH?>editUser/<?= $user->login?>" class="btn btn-warning">Editer</a>
+                     <a href="<?=ROOT_PATH?>user/<?= $user->login?>/edit" class="btn btn-warning">Editer</a>
                 </div>
             </div>
        </div>
@@ -43,6 +43,6 @@
 </div>
 
 <?php
-    $title = "Profil de ".$user->prenom;
+    $title = "Profil de ".$user->login;
     $content = ob_get_clean();
 ?>

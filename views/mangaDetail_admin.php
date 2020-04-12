@@ -11,8 +11,9 @@
         <img src="../image/<?= $manga->imageData?>_<?= $manga->volume ?>" height="45%" width="25%">
     <br>
     <br>
-    <a href="<?=ROOT_PATH?>panier/<?= $manga->id ?>/add" class="btn btn-primary">Ajouter au panier<a>
-   <?php
+        <a href="<?= ROOT_PATH.'mangaAdmin/'.$manga->id.'/edit' ?>" class="btn btn-warning">Editer</a>
+        <a href="<?= ROOT_PATH.'mangaAdmin/'.$manga->id.'/delete' ?>" class="btn btn-danger">Supprimer</a>
+<?php
     $title="Detail de ".$manga->title;
     $content= ob_get_clean();
 ?>

@@ -5,13 +5,13 @@
     include 'views/includes/header.php';
     include 'views/includes/navbarUser.php';
 
-    if(!empty($_POST['mangaId']) && $_POST['action'] =="add"){
+    if(REQ_ACTION == "add"){
 
-        Panier::addToCart($_POST['mangaId']);
+        Panier::addToCart(REQ_TYPE_ID);
     }
-    elseif (!empty($_POST['mangaId']) && $_POST['action'] =="remove"){
+    elseif (REQ_ACTION =="remove"){
         
-        Panier::removefromCart($_POST['mangaId']);
+        Panier::removefromCart(REQ_TYPE_ID);
     }
 
 

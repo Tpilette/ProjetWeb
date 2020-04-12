@@ -6,7 +6,7 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>manga">Nos mangas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>mangaAdmin">Gestion mangas</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>admin">Menu d'administration</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>statistiques">Statistiques</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?=ROOT_PATH?>commandeListing">Listing commandes</a></li>

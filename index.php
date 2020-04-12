@@ -22,9 +22,9 @@ if (!count($segments) or $segments[0] == 'index'){
 // Structure URL: http://projetweb.test/{REQ_TYPE}/{REQ_TYPE_ID}/{REQ_ACTION}
 define('REQ_TYPE', $segments[0] ?? Null);
 define('REQ_TYPE_ID', $segments[1] ?? Null);
+define('REQ_ACTION', $segments[2] ?? Null);
 
 // with req_action 
-// define('REQ_ACTION', $segments[2] ?? Null);
 // $file = 'controllers/'.REQ_TYPE.(REQ_ACTION ? '_'.REQ_ACTION : '').'.php'; 
 
 //without req_action

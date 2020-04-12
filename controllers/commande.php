@@ -4,7 +4,7 @@
     require_once 'models/user.php';
     require_once 'models/manga.php';
 
-    if(!empty($_POST['action'] =="validerPanier")){
+    if(REQ_ACTION =="validerPanier"){
 
         //add content to commande
         $commandeId = Commande::validateCart($_SESSION['userId'],$_SESSION['totalPanier']);

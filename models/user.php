@@ -88,7 +88,7 @@ class User
     public function addUser($login,$pasword,$email){
     
         // ici faire l'insert en db
-        $response = Database::getDB()->prepare('INSERT INTO personne SET login = :login,password = :password,email = :email,role = 1');
+        $response = Database::getDB()->prepare('INSERT INTO personne SET login=:login, password=:password, email=:email,role = 1');
         $response->execute([':login' => $login, ':password' => password_hash($pasword, PASSWORD_DEFAULT), ':email' => $email]);
 
         $response->closeCursor(); 
@@ -104,7 +104,7 @@ class User
         
     }
     
-    public function editUser($user,$login,$email,$password,$confirmPassword) {
+    public function editUser($user,$email,$password,$confirmPassword,$nom,$prenom,$adresse,$numTel,$dateNaissance) {
         
             if ($password != $confirmPassword)
             {
@@ -113,16 +113,16 @@ class User
             else
             {
                 //C'est ici qu'on va faire l'update de l'utilisateur.
-                $response = Database::getDB()->prepare('UPDATE personne SET email = :email, password = :password WHERE login = :login');
+                $response = Database::getDB()->prepare('UPDATE personne SET email = :email, password = :password, nom=:nom, prenom=:prenom, adresse=:adresse, numTel=:numTel, dateNaissance=:dateNaissance WHERE login = :login');
                 if ($password) {
                     $password = password_hash($password, PASSWORD_DEFAULT);
                 }
                 else {
                     $password = $user->password;
                 }
-                $response->execute([':email' => $email, ':password' => $password, ':login' => $user->login]);
+                $response->execute([':email' => $email, ':password' => $password, ':nom' => $nom, ':prenom' => $prenom, ':adresse' => $adresse, ':numTel' => $numTel, ':dateNaissance' => $dateNaissance, ':login' => $user->login]);
                 $response->closeCursor(); 
-                return getUserById($user->login);
+                return self::getUserByLogin($user->login);
              
             }
     

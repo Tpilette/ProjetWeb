@@ -31,9 +31,12 @@
             $user = User::getUserByLogin(REQ_TYPE_ID);
             include 'views/user_edit.php';
         }
-
-
     }
+    elseif(REQ_ACTION =='delete'){
+
+        User::delete(REQ_TYPE_ID);
+    }
+    
     
     include 'views/includes/content.php';
     include 'views/includes/footer.php';

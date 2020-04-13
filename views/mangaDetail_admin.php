@@ -8,7 +8,7 @@
         <dt class="col-sm-2">Prix</dt>
             <dd class="col-sm-10"><?=$manga->prix?>€</dd>
     </dl>
-        <img src="../image/<?= $manga->imageData?>_<?= $manga->volume ?>" height="45%" width="25%">
+        <img src="../../image/<?= $manga->imageData?>_<?= $manga->volume ?>" height="45%" width="25%">
     <br>
     <br>
         <a href="<?= ROOT_PATH.'mangaAdmin/'.$manga->id.'/edit' ?>" class="btn btn-warning">Editer</a>

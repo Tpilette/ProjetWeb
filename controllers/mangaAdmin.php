@@ -16,7 +16,7 @@
         if(!empty($_POST)){
 
             $manga = Manga::create($_POST['auteur'],$_POST['editeur'],$_POST['genre'],$_POST['prix'],$_POST['title'],$_POST['volume'],$_FILES);
-            include 'views/mangaDetail.php';
+            include 'views/mangaDetail_admin.php';
         }
         else{
             include 'views/manga_add.php';
@@ -27,7 +27,8 @@
 
         if(!REQ_TYPE_ID){
 
-            
+            $manga = Manga::edit($_POST['id'],$_POST['auteur'],$_POST['editeur'],$_POST['genre'],$_POST['prix'],$_POST['title'],$_POST['volume']);
+            include 'views/mangaDetail_admin.php';
         }
         else{
             $manga = Manga::getMangaById(REQ_TYPE_ID);
@@ -35,6 +36,10 @@
         }
     }
     elseif(REQ_ACTION == 'delete'){
+
+        Manga::Delete(REQ_TYPE_ID);
+        $mangas = Manga::getMangas();
+        header("Location: ".ROOT_PATH."mangaAdmin");
         
     }
         

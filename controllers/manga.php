@@ -29,7 +29,7 @@
     else {
 
         $manga = Manga::getMangaById(REQ_TYPE_ID);
-        if($_SESSION['role'] == USER)
+        if(empty($_SESSION['role']) || $_SESSION['role'] == USER)
         {
             include 'views/mangaDetail.php';     
         }

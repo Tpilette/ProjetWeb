@@ -12,7 +12,7 @@
     <br>
     <br>
     <a href="<?=ROOT_PATH?>panier/<?= $manga->id ?>/add" class="btn btn-primary">Ajouter au panier<a>
-   <?php
+<?php
     $title="Detail de ".$manga->title;
     $content= ob_get_clean();
 ?>

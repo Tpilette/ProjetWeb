@@ -26,8 +26,8 @@
         <input type="text" class="form-control" id="idEditeur" name="editeur">
     </div>
     <div class="form-group">
-        <label for="idImage">Image</label>
-        <input type="file" id="idImage" name="imageData">
+        <label for="fileToUpload">Image</label>
+        <input type="file" id="fileToUpload" name="fileToUpload">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

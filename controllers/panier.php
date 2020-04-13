@@ -7,7 +7,14 @@
 
     if(REQ_ACTION == "add"){
 
-        Panier::addToCart(REQ_TYPE_ID);
+        if(empty($_SESSION['role'])){
+
+            header("Location: ".ROOT_PATH."login");
+        }
+        else
+        {
+            Panier::addToCart(REQ_TYPE_ID);
+        }
     }
     elseif (REQ_ACTION =="remove"){
         

@@ -139,6 +139,12 @@ class User
         return $user;
     }
 
+    public function delete($id) {        
+
+        $response = Database::getDB()->prepare('DELETE FROM personne WHERE id = :id');
+        $response->execute([':id' => $id]);
+        $response->closeCursor();  
+    }
 
 }
 ?>

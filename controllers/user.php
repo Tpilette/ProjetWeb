@@ -3,14 +3,14 @@
     include 'views/includes/header.php';
 
     if($_SESSION['role'] == USER)
-        {
+    {
 
-            include 'views/includes/navbarUser.php';
-        }
-        else
-        {
-            include 'views/includes/navbarAdmin.php';
-        }
+        include 'views/includes/navbarUser.php';
+    }
+    else
+    {
+        include 'views/includes/navbarAdmin.php';
+    }
     
 
     if(REQ_ACTION == 'edit'){

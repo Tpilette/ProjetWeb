@@ -2,6 +2,8 @@
 
 <div>
 <a href="<?= ROOT_PATH.'mangaAdmin//add'?>" class="btn btn-primary">Ajouter un manga</a>
+</div>
+<br>
 <div class="card-deck">  
   <?php foreach ($mangas as $manga): ?>
     <div class="col-4">
@@ -24,6 +26,7 @@
   </div>
   <?php endforeach ?>
 </div>
+
 
 
 <?php 

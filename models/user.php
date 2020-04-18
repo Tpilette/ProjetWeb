@@ -90,7 +90,7 @@ class User
     public function addUser($login,$pasword,$email){
     
         // ici faire l'insert en db
-        $response = Database::getDB()->prepare('INSERT INTO personne SET login=:login, password=:password, email=:email,role = 1');
+        $response = Database::getDB()->prepare('INSERT INTO personne SET login=:login, password=:password, email=:email,role = 1,isActive=1');
         $response->execute([':login' => $login, ':password' => password_hash($pasword, PASSWORD_DEFAULT), ':email' => $email]);
 
         $response->closeCursor(); 

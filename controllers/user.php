@@ -34,7 +34,10 @@
     }
     elseif(REQ_ACTION =='delete'){
 
+        $title ="Gestion Utilisateur";
         User::delete(REQ_TYPE_ID);
+        $users= User::getUsers();
+        include 'views/admin.php';
     }
     
     

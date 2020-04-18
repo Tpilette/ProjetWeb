@@ -12,6 +12,11 @@
         <br>
         <?= $commande->montant?>    
     <dt>
+    <dt class="col-sm-4">
+        Effectuée par :
+        <br>
+        <?= $commande->nom.' '.$commande->prenom?>    
+    <dt>
 </dl>
 <?php foreach($commande->contenu as $content):?>
     <dl class="row">

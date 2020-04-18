@@ -9,7 +9,7 @@
         {
             $user = User::getUserByLogin($_POST['login']);
             
-            if($user && password_verify($_POST['password'], $user->password))
+            if($user && $user->isActive == TRUE && password_verify($_POST['password'], $user->password))
             {
                 //Authentification OK
                 $_SESSION['login'] = $user->login;
@@ -21,7 +21,13 @@
             }
             else
             {
-                $errorMessage = "Mauvais login/password";
+                if($user && $user->isActive == FALSE){
+                    $errorMessage = "Votre compte est désactivé";
+                    include 'views/error.php';
+                }
+                else{
+                    $errorMessage = "Mauvais login/password";
+                }                
             }
         }
         else

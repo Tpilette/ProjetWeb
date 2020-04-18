@@ -8,8 +8,15 @@
 
     if(!REQ_ACTION){
 
-        $mangas = Manga::getMangas();
-        include 'views/mangas_admin.php';
+        if(!REQ_TYPE_ID){
+            $mangas = Manga::getMangas();
+            include 'views/mangas_admin.php';
+        }
+        else{
+            $manga = Manga::getMangaById(REQ_TYPE_ID);
+            include 'views/mangaDetail_admin.php';
+        }
+        
     }
     elseif(REQ_ACTION == 'add'){
 
@@ -28,7 +35,7 @@
         if(!REQ_TYPE_ID){
 
             $manga = Manga::edit($_POST['id'],$_POST['auteur'],$_POST['editeur'],$_POST['genre'],$_POST['prix'],$_POST['title'],$_POST['volume']);
-            include 'views/mangaDetail_admin.php';
+            include 'views/manga_edit.php';
         }
         else{
             $manga = Manga::getMangaById(REQ_TYPE_ID);

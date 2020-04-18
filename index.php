@@ -2,6 +2,8 @@
 // définition des id de role en tant que constante. facilité de lecture du code => problème lors de la récupération du nom du role via PDO
 define('ADMIN',2);
 define('USER',1);
+define('TRUE',1);
+define('FALSE',0);
 
 // On démarre toujours la session
 session_start(); 

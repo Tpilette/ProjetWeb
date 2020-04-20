@@ -15,6 +15,7 @@ class User
     public $adresse;
     public $numTel;
     public $dateNaissance;
+    public $isActive;
     
     public function  __construct($data = null){
 
@@ -29,13 +30,14 @@ class User
             $this->adresse = $data['adresse'] != null? $data['adresse'] : '';
             $this->numTel = $data['numTel'] != null? $data['numTel'] : '';
             $this->dateNaissance = $data['dateNaissance'] != null? $data['dateNaissance'] : '';
+            $this->isActive = $data['isActive'];
         }        
     }
 
     public function getUsers() {
         try
         {
-            $response = Database::getDB()->query('SELECT id,login,password,email,nom,prenom,adresse,numTel,dateNaissance,role FROM personne');
+            $response = Database::getDB()->query('SELECT id,login,password,email,nom,prenom,adresse,numTel,dateNaissance,role,isActive FROM personne');
     
             $users = $response->fetchAll(PDO::FETCH_CLASS, 'User');
     
@@ -51,7 +53,7 @@ class User
     public function getUserByLogin($login) {
         try
         {
-            $response = Database::getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role FROM personne WHERE login = :login');
+            $response = Database::getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role,isActive FROM personne WHERE login = :login');
             $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');    
             $response->execute([':login' => $login]);
             $user = $response->fetch();
@@ -69,7 +71,7 @@ class User
     public function getUserById($userId) {
         try
         {
-            $response = Database::getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role FROM personne WHERE id = :id');
+            $response = Database::getDB()->prepare('SELECT id, login, password, email, nom, prenom,adresse,numTel,dateNaissance,role,isActive FROM personne WHERE id = :id');
             $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'User');    
             $response->execute([':id' => $userId]);
             $user = $response->fetch();
@@ -88,7 +90,7 @@ class User
     public function addUser($login,$pasword,$email){
     
         // ici faire l'insert en db
-        $response = Database::getDB()->prepare('INSERT INTO personne SET login=:login, password=:password, email=:email,role = 1');
+        $response = Database::getDB()->prepare('INSERT INTO personne SET login=:login, password=:password, email=:email,role = 1,isActive=1');
         $response->execute([':login' => $login, ':password' => password_hash($pasword, PASSWORD_DEFAULT), ':email' => $email]);
 
         $response->closeCursor(); 
@@ -139,12 +141,11 @@ class User
         return $user;
     }
 
-    public function delete($id) {        
+    public function delete($login) {        
 
-        $response = Database::getDB()->prepare('DELETE FROM personne WHERE id = :id');
-        $response->execute([':id' => $id]);
+        $response = Database::getDB()->prepare('UPDATE personne SET isActive=0 WHERE login = :login');
+        $response->execute([':login' => $login]);
         $response->closeCursor();  
     }
-
 }
 ?>

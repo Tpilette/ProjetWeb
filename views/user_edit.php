@@ -31,7 +31,7 @@
     </div>
     <div class="form-group">
         <label for="idnumTel">Numéro de téléphone</label>
-        <input type="text" class="form-control" id="idnumTel" name="numTel" value="<?= $user->numTel ?>">
+        <input type="number" class="form-control" id="idnumTel" name="numTel" value="<?= $user->numTel ?>">
     </div>
     <div class="form-group">
         <label for="idDateNaissance">Date de naissance</label>

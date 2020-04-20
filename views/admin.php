@@ -16,6 +16,7 @@
       <th scope="row"><?= $user->id ?></th>
       <td><?= $user->login ?></td>
       <td><?= $user->email ?></td>
+      <td><?= $user->isActive == TRUE? "Actif" : "Inactif" ?></td>
       <td>
           <a href="<?=ROOT_PATH?>account/<?= $user->login ?>" class="btn btn-primary">Voir<a>
           <a href="<?=ROOT_PATH?>user/<?= $user->login ?>/edit" class="btn btn-warning">Editer<a>

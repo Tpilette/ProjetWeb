@@ -14,10 +14,9 @@
     <tr>
         <th scope="row"><?= $com->date ?></th>
         <td><?= $com->montant ?></td>
-        <td><?= $com->idUser ?></td>
+        <td><?= $com->nom.' '.$com->prenom ?></td>
         <td>
           <a href="<?=ROOT_PATH?>commande/<?= $com->id ?>" class="btn btn-primary">Voir<a>
-          <a href="<?=ROOT_PATH?>delete/commande/<?= $user->login ?>" class="btn btn-danger">Supprimer<a>
         </td>
     </tr>
 <?php endforeach ?>

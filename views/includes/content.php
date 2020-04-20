@@ -9,4 +9,5 @@
             </div>
             <!-- Contenu -->
             <?php echo $content; ?>
+            <?php if(isset($errorMessage)) echo $errorMessage ?>
         </main>

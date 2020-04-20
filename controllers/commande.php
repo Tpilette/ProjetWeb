@@ -16,6 +16,8 @@
         ContenuCommande::addContenuCommande($listManga,$commandeId);
         $_SESSION['shoppingCart'] = [];
         $title = "Confirmation commande ".$commandeId;
+        	
+        // mail("thibault_pilette@hotmail.com","Votre commande nekoShop","Nous vous confirmons la réception de votre commande et la préparons dans les plus bref délais.");
         include 'views/includes/header.php';
         include 'views/includes/navbarUser.php';
         include 'views/commandeValide.php';

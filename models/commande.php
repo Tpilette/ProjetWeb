@@ -9,6 +9,8 @@ class Commande {
     public $idUser;
     public $montant;
     public $contenu;
+    public $nom;
+    public $prenom;
 
     public function  __construct($data = null){
 
@@ -18,6 +20,8 @@ class Commande {
             $this->date = $data['date'];
             $this->idUser = $data['idUser'];
             $this->montant = $data['montant'];
+            $this->nom = $data['nom'] != null? $data['nom'] : '';
+            $this->prenom = $data['prenom']!= null? $data['prenom'] : '';
             $this->contenu = [];
             
         }        
@@ -25,7 +29,8 @@ class Commande {
     // retourne l'ensemble des données.
     public function getListingCommande() {
 
-        $response = Database::getDB()->prepare('SELECT * FROM commande');
+        $response = Database::getDB()->prepare('SELECT commande.id,date,montant,nom,prenom FROM commande
+                                                INNER JOIN personne on personne.id = commande.idUser');
         $response->execute();
         $commandes = $response->fetchAll(PDO::FETCH_CLASS, "Commande");
 
@@ -49,7 +54,9 @@ class Commande {
     public function getCommandeById($id) {
 
         //
-        $response = Database::getDB()->prepare('SELECT * FROM commande WHERE id = :id');
+        $response = Database::getDB()->prepare('SELECT commande.id,date,montant,nom,prenom FROM commande
+                                                INNER JOIN personne on personne.id = commande.idUser
+                                                WHERE commande.id = :id');
         $response->setFetchMode(PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE, 'Commande');
         $response->execute([':id' => $id]);
         $commande = $response->fetch();

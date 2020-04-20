@@ -35,4 +35,12 @@ ajouter à la fin (en adaptant le path où se trouvent les sources du projet):
     ServerName projetweb.test<br>
 <\/VirtualHost>
 <br>
+
+### utilisation du site : 
+- création d'un user admin via la db ou enregistrer un nouvel utilisateur et lui set le role admin en db.
+- utiliser les credentials du user admin dans la classe Database pour le pdo.
+- interface différente si user/admin/anonyme. 
+-> user : panier, commandes personnelles,account, listing mangas et détail d'un manga
+-> anonymous : signup/login, listing manga et détail d'un manga
+-> admin : listing mangas avec option (add,delete,edit), détail manga avec option(delete/edit), listing de toutes les commandes passées, statistiques de ventes par titre, gestion des utilisateurs.
 Url "home" : http://projetweb.test/ProjetECommerce/

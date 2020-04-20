@@ -2,7 +2,7 @@
 
 Projet réalisé en PHP - MVC, utilisation d'un google chart en javascript pour renvoyer des statistique sur le site.
 
-Thème : "boutique de manga et goodies japonnais"
+Thème : "boutique de manga"
 
 
 

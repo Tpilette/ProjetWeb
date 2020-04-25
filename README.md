@@ -38,7 +38,7 @@ ajouter à la fin (en adaptant le path où se trouvent les sources du projet):
 
 ### utilisation du site : 
 - création d'un user admin via la db ou enregistrer un nouvel utilisateur et lui set le role admin en db.
-- utiliser les credentials du user admin dans la classe Database pour le pdo.
+- créer un utilisateur technique pour l'utilisation du pdo et set son nom/password dans la classe database
 - interface différente si user/admin/anonyme. 
 <br>-> user : panier, commandes personnelles,account, listing mangas et détail d'un manga
 <br>-> anonymous : signup/login, listing manga et détail d'un manga

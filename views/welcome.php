@@ -1,3 +1,3 @@
 <?php
-    $content="Welcome";
+    $content="Bienvenue sur Neko Shop ! ";
 ?>

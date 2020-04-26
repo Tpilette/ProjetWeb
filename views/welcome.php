@@ -1,5 +1,3 @@
 <?php
-$title="Bienvenue";
-$content="Welcome";
-include 'includes/template.php';
+    $content="Bienvenue sur Neko Shop ! ";
 ?>

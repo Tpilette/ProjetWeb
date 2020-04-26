@@ -1,8 +1,7 @@
 <?php 
 
-    require 'models/articles.php';
-    $data = getArticles();
-
-    echo json_encode($data);
-
+    require_once 'models/stats.php';
+    $mangas = Stats::getStatSaleByTitle();    
+    echo json_encode($mangas);
+    
 ?>

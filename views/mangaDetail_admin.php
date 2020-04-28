@@ -7,6 +7,8 @@
             <dd class="col-sm-10"><?=$manga->volume?></dd>
         <dt class="col-sm-2">Prix</dt>
             <dd class="col-sm-10"><?=$manga->prix?>€</dd>
+        <dt class="col-sm-2">Disponibilité</dt>
+            <dd class="col-sm-10"><?=$manga->isAvailable == 0? "Indisponible" : "Disponible"?></dd>
     </dl>
         <img src="../image/<?= $manga->imageData?>_<?= $manga->volume ?>" height="45%" width="25%">
     <br>

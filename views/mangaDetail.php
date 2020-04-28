@@ -7,6 +7,10 @@
             <dd class="col-sm-10"><?=$manga->volume?></dd>
         <dt class="col-sm-2">Prix</dt>
             <dd class="col-sm-10"><?=$manga->prix?>€</dd>
+        <dt class="col-sm-2">Auteur</dt>
+            <dd class="col-sm-10"><?=$manga->auteur?></dd>
+        <dt class="col-sm-2">Genre</dt>
+            <dd class="col-sm-10"><?=$manga->genre?></dd>
     </dl>
         <img src="../image/<?= $manga->imageData?>_<?= $manga->volume ?>" height="45%" width="25%">
     <br>

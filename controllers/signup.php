@@ -35,7 +35,7 @@
     }
     else
     {
-        $errorMessage = "Tu as oublié d'encoder quelque chose...";
+        $errorMessage = "";
     }
     
     include 'views/signup.php';

@@ -147,5 +147,12 @@ class User
         $response->execute([':login' => $login]);
         $response->closeCursor();  
     }
+
+    public function activer($login) {        
+
+        $response = Database::getDB()->prepare('UPDATE personne SET isActive=1 WHERE login = :login');
+        $response->execute([':login' => $login]);
+        $response->closeCursor();  
+    }
 }
 ?>

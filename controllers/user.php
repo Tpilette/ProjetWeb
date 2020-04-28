@@ -39,6 +39,12 @@
         $users= User::getUsers();
         include 'views/admin.php';
     }
+    elseif(REQ_ACTION =='activer'){
+        $title ="Gestion Utilisateur";
+        User::activer(REQ_TYPE_ID);
+        $users= User::getUsers();
+        include 'views/admin.php';
+    }
     
     
     include 'views/includes/content.php';

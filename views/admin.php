@@ -22,7 +22,12 @@
           <a href="<?=ROOT_PATH?>user/<?= $user->login ?>/edit" class="btn btn-warning">Editer<a>
           <?php if($_SESSION['login'] != $user->login): ?>
             <a href="<?=ROOT_PATH?>user/<?= $user->login ?>/delete" class="btn btn-danger">Supprimer<a>
+          <?php endif?>          
+          <?php if($user->isActive == FALSE): ?>
+            <a href="<?=ROOT_PATH?>user/<?= $user->login ?>/activer" class="btn btn-primary">Activer<a>
           <?php endif?>
+          
+
       </td>
     </tr>
 <?php endforeach ?>

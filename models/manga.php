@@ -12,6 +12,7 @@ class Manga {
     public $auteur;
     public $imageData;
     public $genre;
+    public $isAvailable;
       
     public function  __construct($data = null){
 
@@ -25,13 +26,25 @@ class Manga {
             $this->auteur = $data['auteur'];
             $this->imageData = $data['imageData'];
             $this->genre = $data['genre'];
+            $this->isAvailable = $data['isAvailable'];
         }        
     }
 
 
 
-        // retourne l'ensemble des données.
+    // retourne les mangas disponibles (vue user).
     public function getMangas() {
+
+        $response = Database::getDB()->prepare('SELECT * FROM manga WHERE isAvailable=1');
+        $response->execute();
+        $mangas = $response->fetchAll(PDO::FETCH_CLASS, "Manga");
+
+        $response->closeCursor();
+        return $mangas;
+    }
+    
+    // retourne tout les mangas disponibles (vue admin).
+    public function getAllMangas() {
 
         $response = Database::getDB()->prepare('SELECT * FROM manga');
         $response->execute();
@@ -66,11 +79,11 @@ class Manga {
     }
 
 
-    public function edit($id,$auteur,$editeur,$genre,$prix,$title,$volume) {
+    public function edit($id,$auteur,$editeur,$genre,$prix,$title,$volume,$isAvailable) {
 
-        $response = Database::getDB()->prepare('UPDATE manga SET auteur=:auteur, editeur=:editeur, genre=:genre,imageData=:imageData, prix=:prix, title=:title,volume=:volume WHERE id = :id');
+        $response = Database::getDB()->prepare('UPDATE manga SET auteur=:auteur, editeur=:editeur, genre=:genre,imageData=:imageData, prix=:prix, title=:title,volume=:volume,isAvailable=:isAvailable WHERE id = :id');
         $imageData = str_replace(' ', '_',$title);
-        $response->execute([':auteur' => $auteur, ':editeur' => $editeur, ':genre' => $genre, ':imageData' => $imageData, ':prix' => $prix, ':title' => $title, ':volume' => $volume,':id'=>$id]);
+        $response->execute([':auteur' => $auteur, ':editeur' => $editeur, ':genre' => $genre, ':imageData' => $imageData, ':prix' => $prix, ':title' => $title, ':volume' => $volume,':id'=>$id,':isAvailable' =>$isAvailable]);
         $response->closeCursor();
         
         return self::getMangaById($id);   
@@ -79,7 +92,7 @@ class Manga {
     public function create($auteur,$editeur,$genre,$prix,$title,$volume,$image) {
 
         //create manga
-        $response = Database::getDB()->prepare('INSERT INTO manga SET auteur=:auteur, editeur=:editeur, genre=:genre,imageData=:imageData, prix=:prix, title=:title,volume=:volume');
+        $response = Database::getDB()->prepare('INSERT INTO manga SET auteur=:auteur, editeur=:editeur, genre=:genre,imageData=:imageData, prix=:prix, title=:title,volume=:volume,isAvailable=1');
         $imageData = str_replace(' ', '_', $title);
         $response->execute([':auteur' => $auteur, ':editeur' => $editeur, ':genre' => $genre, ':imageData' => $imageData, ':prix' => $prix, ':title' => $title, ':volume' => $volume]);
         $response->closeCursor();  
@@ -104,7 +117,7 @@ class Manga {
 
         $manga = self::getMangaById($id);
 
-        $response = Database::getDB()->prepare('DELETE FROM manga WHERE id = :id');
+        $response = Database::getDB()->prepare('UPDATE manga SET isAvailable = false WHERE id = :id');
         $response->execute([':id' => $id]);
         $response->closeCursor();  
 

@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
         <label for="idPrix">Prix</label>
-        <input type="number" min="1" step="any" class="form-control" id="idPrix" name="prix" value="<?=$manga->prix?>">
+        <input type="number"  step="any" class="form-control" id="idPrix" name="prix" value="<?=$manga->prix?>">
     </div>
     <div class="form-group">
         <label for="idAuteur">Auteur</label>
@@ -27,7 +27,11 @@
     </div>
     <div class="form-group">
         <label for="idImage">Image</label>
-        <input type="texte" class="form-control" id="idImage" name="image" value="<?= $manga->imageData?>_<?= $manga->volume ?>">
+        <input type="texte" class="form-control" id="idImage" name="image" value="<?= $manga->imageData?>_<?= $manga->volume ?>" readonly>
+    </div>
+    <div class="form-group">
+        <label for="idDispo">Disponibilité</label>
+        <input type="checkbox" class="form-control" id="idDispo" name="isAvailable" value="<?=$manga->isAvailable?>">
     </div>
     <input type="hidden" id="idIdManga" name="id" value="<?= $manga->id?>" >
     <button type="submit" class="btn btn-primary">Submit</button>

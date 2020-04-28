@@ -2,7 +2,7 @@
 
 Projet réalisé en PHP - MVC, utilisation d'un google chart en javascript pour renvoyer des statistique sur le site.
 
-Thème : "boutique de manga et goodies japonnais"
+Thème : "boutique de manga"
 
 
 
@@ -21,4 +21,26 @@ Modifier fichier httpd.conf dans la section "Secure (SSL/TLS) connections" et ra
 <br>
 Editer fichier host dans C:\Windows\System32\drivers\etc et ajouter : 127.0.0.1 projetweb.test
 <br>
-Url "home" : http://projetweb.test/ProjetECommerce/
+éditer fichier : http-vshosts.conf
+ajouter à la fin (en adaptant le path où se trouvent les sources du projet): 
+
+<Directory "C:\Users\Thibault\source\repos\projetweb"><br>
+    AllowOverride All<br>
+    Options Indexes MultiViews FollowSymLinks<br>
+    Require all granted<br>
+<\/Directory>
+
+<VirtualHost *:80><br>
+    DocumentRoot C:\Users\Thibault\source\repos\projetweb<br>
+    ServerName projetweb.test<br>
+<\/VirtualHost>
+<br>
+
+### utilisation du site : 
+- création d'un user admin via la db ou enregistrer un nouvel utilisateur et lui set le role admin en db.
+- créer un utilisateur technique pour l'utilisation du pdo et set son nom/password dans la classe database
+- interface différente si user/admin/anonyme. 
+<br>-> user : panier, commandes personnelles,account, listing mangas et détail d'un manga
+<br>-> anonymous : signup/login, listing manga et détail d'un manga
+<br>-> admin : listing mangas avec option (add,delete,edit), détail manga avec option(delete/edit), listing de toutes les commandes passées, statistiques de ventes par titre, gestion des utilisateurs.
+<br>Url "home" : http://projetweb.test/ProjetECommerce/

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 18 avr. 2020 à 16:32
+-- Généré le : mer. 29 avr. 2020 à 19:15
 -- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.4.3
+-- Version de PHP : 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -46,9 +45,7 @@ INSERT INTO `commande` (`id`, `date`, `idUser`, `montant`) VALUES
 (28, '2020-04-12', 1, 7.50),
 (29, '2020-04-12', 1, 14.40),
 (30, '2020-04-15', 5, 7.50),
-(31, '2020-04-18', 12, 8.00),
-(32, '2020-04-18', 1, 8.00),
-(33, '2020-04-18', 1, 8.00);
+(35, '2020-04-28', 13, 22.50);
 
 -- --------------------------------------------------------
 
@@ -60,7 +57,7 @@ CREATE TABLE `contenucommande` (
   `id` int(10) NOT NULL,
   `idManga` int(10) DEFAULT NULL,
   `idCommande` int(10) DEFAULT NULL,
-  `prixEnDate` double(3,2) DEFAULT NULL
+  `prixEnDate` double(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -82,9 +79,7 @@ INSERT INTO `contenucommande` (`id`, `idManga`, `idCommande`, `prixEnDate`) VALU
 (18, 17, 29, 7.20),
 (19, 18, 29, 7.20),
 (20, 4, 30, 7.50),
-(21, 4, 31, 8.00),
-(22, 4, 32, 8.00),
-(23, 4, 33, 8.00);
+(25, 4, 35, 22.50);
 
 -- --------------------------------------------------------
 
@@ -100,50 +95,51 @@ CREATE TABLE `manga` (
   `prix` double(10,2) DEFAULT NULL,
   `auteur` varchar(100) DEFAULT NULL,
   `imageData` varchar(50) DEFAULT NULL,
-  `genre` varchar(50) DEFAULT NULL
+  `genre` varchar(50) DEFAULT NULL,
+  `isAvailable` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `manga`
 --
 
-INSERT INTO `manga` (`id`, `title`, `editeur`, `volume`, `prix`, `auteur`, `imageData`, `genre`) VALUES
-(4, 'Card Captor Sakura', 'Pika', 1, 8.00, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(5, 'Card Captor Sakura', 'Pika', 2, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(6, 'Card Captor Sakura', 'Pika', 3, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(7, 'Card Captor Sakura', 'Pika', 4, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(8, 'Card Captor Sakura', 'Pika', 5, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(9, 'Card Captor Sakura', 'Pika', 6, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(10, 'Card Captor Sakura', 'Pika', 7, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(11, 'Card Captor Sakura', 'Pika', 8, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(12, 'Card Captor Sakura', 'Pika', 9, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo'),
-(13, 'Frau Faust', 'Pika', 1, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen'),
-(14, 'Frau Faust', 'Pika', 2, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen'),
-(15, 'Frau Faust', 'Pika', 3, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen'),
-(16, 'Frau Faust', 'Pika', 4, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen'),
-(17, 'Beast Master', 'Kaze Manga', 1, 7.20, 'Kyousuke Motomi', 'Beast_Master', 'shojo'),
-(18, 'Beast Master', 'Kaze Manga', 2, 7.20, 'Kyousuke Motomi', 'Beast_Master', 'shojo'),
-(19, 'Beyond Evil', 'Kaze Manga', 1, 7.20, 'Miura', 'Beyond_Evil', 'seinen'),
-(20, 'Beyond Evil', 'Kaze Manga', 2, 7.20, 'Miura', 'Beyond_Evil', 'seinen'),
-(21, 'Beyond Evil', 'Kaze Manga', 3, 7.20, 'Miura', 'Beyond_Evil', 'seinen'),
-(22, 'Beyond Evil', 'Kaze Manga', 4, 7.20, 'Miura', 'Beyond_Evil', 'seinen'),
-(23, 'Mushoku Tensei', 'DokiDoki', 1, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(24, 'Mushoku Tensei', 'DokiDoki', 2, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(25, 'Mushoku Tensei', 'DokiDoki', 3, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(26, 'Mushoku Tensei', 'DokiDoki', 4, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(27, 'Mushoku Tensei', 'DokiDoki', 5, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(28, 'Mushoku Tensei', 'DokiDoki', 6, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(29, 'Mushoku Tensei', 'DokiDoki', 7, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(30, 'Mushoku Tensei', 'DokiDoki', 8, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(31, 'Mushoku Tensei', 'DokiDoki', 9, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(32, 'Mushoku Tensei', 'DokiDoki', 10, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen'),
-(33, 'Goblin Slayer', 'Kurokawa', 1, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen'),
-(34, 'Goblin Slayer', 'Kurokawa', 2, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen'),
-(35, 'Goblin Slayer', 'Kurokawa', 3, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen'),
-(36, 'Goblin Slayer', 'Kurokawa', 4, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen'),
-(37, 'Goblin Slayer', 'Kurokawa', 5, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen'),
-(38, 'Goblin Slayer', 'Kurokawa', 6, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen'),
-(39, 'Goblin Slayer', 'Kurokawa', 7, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen');
+INSERT INTO `manga` (`id`, `title`, `editeur`, `volume`, `prix`, `auteur`, `imageData`, `genre`, `isAvailable`) VALUES
+(4, 'Card Captor Sakura', 'Pika', 1, 22.50, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(5, 'Card Captor Sakura', 'Pika', 2, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(6, 'Card Captor Sakura', 'Pika', 3, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(7, 'Card Captor Sakura', 'Pika', 4, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(8, 'Card Captor Sakura', 'Pika', 5, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(9, 'Card Captor Sakura', 'Pika', 6, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(10, 'Card Captor Sakura', 'Pika', 7, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(11, 'Card Captor Sakura', 'Pika', 8, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(12, 'Card Captor Sakura', 'Pika', 9, 7.20, 'CLAMP', 'Card_Captor_Sakura', 'shojo', 1),
+(13, 'Frau Faust', 'Pika', 1, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen', 1),
+(14, 'Frau Faust', 'Pika', 2, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen', 1),
+(15, 'Frau Faust', 'Pika', 3, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen', 1),
+(16, 'Frau Faust', 'Pika', 4, 7.20, 'Kore Yamazaki', 'Frau_Faust', 'seinen', 1),
+(17, 'Beast Master', 'Kaze Manga', 1, 7.20, 'Kyousuke Motomi', 'Beast_Master', 'shojo', 1),
+(18, 'Beast Master', 'Kaze Manga', 2, 7.20, 'Kyousuke Motomi', 'Beast_Master', 'shojo', 1),
+(19, 'Beyond Evil', 'Kaze Manga', 1, 7.20, 'Miura', 'Beyond_Evil', 'seinen', 1),
+(20, 'Beyond Evil', 'Kaze Manga', 2, 7.20, 'Miura', 'Beyond_Evil', 'seinen', 1),
+(21, 'Beyond Evil', 'Kaze Manga', 3, 7.20, 'Miura', 'Beyond_Evil', 'seinen', 1),
+(22, 'Beyond Evil', 'Kaze Manga', 4, 7.20, 'Miura', 'Beyond_Evil', 'seinen', 1),
+(23, 'Mushoku Tensei', 'DokiDoki', 1, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(24, 'Mushoku Tensei', 'DokiDoki', 2, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(25, 'Mushoku Tensei', 'DokiDoki', 3, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(26, 'Mushoku Tensei', 'DokiDoki', 4, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(27, 'Mushoku Tensei', 'DokiDoki', 5, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(28, 'Mushoku Tensei', 'DokiDoki', 6, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(29, 'Mushoku Tensei', 'DokiDoki', 7, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(30, 'Mushoku Tensei', 'DokiDoki', 8, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(31, 'Mushoku Tensei', 'DokiDoki', 9, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(32, 'Mushoku Tensei', 'DokiDoki', 10, 7.20, 'Fujikawa Yuka', 'Mushoku_Tensei', 'shonen', 1),
+(33, 'Goblin Slayer', 'Kurokawa', 1, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen', 1),
+(34, 'Goblin Slayer', 'Kurokawa', 2, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen', 1),
+(35, 'Goblin Slayer', 'Kurokawa', 3, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen', 1),
+(36, 'Goblin Slayer', 'Kurokawa', 4, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen', 1),
+(37, 'Goblin Slayer', 'Kurokawa', 5, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen', 1),
+(38, 'Goblin Slayer', 'Kurokawa', 6, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen', 1),
+(39, 'Goblin Slayer', 'Kurokawa', 7, 7.20, 'Kumo Kagyu', 'Goblin_Slayer', 'seinen', 1);
 
 -- --------------------------------------------------------
 
@@ -171,10 +167,11 @@ CREATE TABLE `personne` (
 
 INSERT INTO `personne` (`id`, `login`, `password`, `email`, `nom`, `prenom`, `adresse`, `numTel`, `dateNaissance`, `role`, `isActive`) VALUES
 (1, 'thibault', '$2y$10$mO5.yiDvpARL7IyCIduTPeQajp8rP0n0e3sYAaja9PKQ99h5HgzSK', 'thibault_pilette@hotmail.com', 'Pilette', 'Thibault', '53 rue Jules Tison Haine-saint-pierre', '0479487998', '1990-02-24', 1, 1),
-(5, 'test2', '$2y$10$s3YzuAR.0IdCI0hv8HCFN.oLEv1mJH9uSJY6QGSKhDzIBYmLRiXlO', 'test@test.com', 'test2', 'test2', 'test2', '0479487998', '2020-04-15', 1, 0),
+(5, 'test2', '$2y$10$s3YzuAR.0IdCI0hv8HCFN.oLEv1mJH9uSJY6QGSKhDzIBYmLRiXlO', 'test@test.com', 'test2', 'test2', 'test2', '0479487998', '2020-04-15', 1, 1),
 (6, 'admin', '$2y$10$2YS7SqOhWPcyQCoSo5JqE.4PYFChxhRsclrNNstKodx7x89imj03y', 'test@test.com', NULL, NULL, NULL, NULL, NULL, 2, 1),
 (11, 'test5', '$2y$10$6daZOLkQgVQWagtLQvp5G.n5fVsObh8VvBTdvzCIyGaplciOvift6', 'test@test.com', NULL, NULL, NULL, NULL, NULL, 1, 1),
-(12, 'neko', '$2y$10$Uxc8oRIYXCkDiwBUiapZ0uJPS5s80oW2SF705MLbdKINiRs1W/NNu', 'neko@mail.com', NULL, NULL, NULL, NULL, NULL, 1, 1);
+(12, 'neko', '$2y$10$Uxc8oRIYXCkDiwBUiapZ0uJPS5s80oW2SF705MLbdKINiRs1W/NNu', 'neko@mail.com', NULL, NULL, NULL, NULL, NULL, 1, 1),
+(13, 'test6', '$2y$10$S2tzNvnd0/bywKHRF0/Ki.nmSgQilyLbTSVOVW8tyKMR5dj1kD/SG', 'test@test.com', NULL, NULL, NULL, NULL, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -242,13 +239,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT pour la table `contenucommande`
 --
 ALTER TABLE `contenucommande`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `manga`
@@ -260,7 +257,7 @@ ALTER TABLE `manga`
 -- AUTO_INCREMENT pour la table `personne`
 --
 ALTER TABLE `personne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pour la table `role`
@@ -282,8 +279,8 @@ ALTER TABLE `commande`
 -- Contraintes pour la table `contenucommande`
 --
 ALTER TABLE `contenucommande`
-  ADD CONSTRAINT `contenucommande_ibfk_1` FOREIGN KEY (`IdManga`) REFERENCES `manga` (`Id`),
-  ADD CONSTRAINT `contenucommande_ibfk_2` FOREIGN KEY (`IdCommande`) REFERENCES `commande` (`id`);
+  ADD CONSTRAINT `contenucommande_ibfk_1` FOREIGN KEY (`idManga`) REFERENCES `manga` (`id`),
+  ADD CONSTRAINT `contenucommande_ibfk_2` FOREIGN KEY (`idCommande`) REFERENCES `commande` (`id`);
 
 --
 -- Contraintes pour la table `personne`

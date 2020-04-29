@@ -11,7 +11,7 @@
         <div class="card-header">
           <?= $manga->title ?> N°: <?= $manga->volume ?>
         </div>    
-        <img src="image/<?= $manga->imageData?>_<?= $manga->volume ?>" class="card-img-top" >    
+        <img src="image/<?= $manga->imageData?>_<?= $manga->volume.".jpg"?>" class="card-img-top" >    
         <div class="card-body">    
           <div class="container">
           <div class="row">

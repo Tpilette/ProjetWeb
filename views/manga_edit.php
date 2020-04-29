@@ -27,7 +27,7 @@
     </div>
     <div class="form-group">
         <label for="idImage">Image</label>
-        <input type="texte" class="form-control" id="idImage" name="image" value="<?= $manga->imageData?>_<?= $manga->volume ?>" readonly>
+        <input type="texte" class="form-control" id="idImage" name="image" value="<?= $manga->imageData?>_<?= $manga->volume.".jpg" ?>" readonly>
     </div>
     <div class="form-group">
         <label for="idDispo">Disponibilité</label>

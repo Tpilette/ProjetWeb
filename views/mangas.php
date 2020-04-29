@@ -8,7 +8,7 @@
        <div class="card-header">
             <?= $manga->title ?> N°: <?= $manga->volume ?>
        </div>
-        <img src="image/<?= $manga->imageData?>_<?= $manga->volume ?>" class="card-img-top" alt="...">
+        <img src="image/<?= $manga->imageData?>_<?= $manga->volume.".jpg"?>" class="card-img-top" alt="...">
 
       <div class="card-body">
         <a href="<?= ROOT_PATH.'manga/'.$manga->id ?>" class="btn btn-primary">Voir le détail</a>

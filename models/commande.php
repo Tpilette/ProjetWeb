@@ -20,8 +20,8 @@ class Commande {
             $this->date = $data['date'];
             $this->idUser = $data['idUser'];
             $this->montant = $data['montant'];
-            $this->nom = $data['nom'] != null? $data['nom'] : '';
-            $this->prenom = $data['prenom']!= null? $data['prenom'] : '';
+            $this->nom = $data['nom'] != null? $data['nom'] : 'Inconnu';
+            $this->prenom = $data['prenom']!= null? $data['prenom'] : 'Inconnu';
             $this->contenu = [];
             
         }        

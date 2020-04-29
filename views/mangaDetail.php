@@ -12,7 +12,7 @@
         <dt class="col-sm-2">Genre</dt>
             <dd class="col-sm-10"><?=$manga->genre?></dd>
     </dl>
-        <img src="../image/<?= $manga->imageData?>_<?= $manga->volume ?>" height="45%" width="25%">
+        <img src="../image/<?= $manga->imageData?>_<?= $manga->volume.".jpg" ?>" height="45%" width="25%">
     <br>
     <br>
     <a href="<?=ROOT_PATH?>panier/<?= $manga->id ?>/add" class="btn btn-primary">Ajouter au panier<a>
